@@ -38,7 +38,7 @@ class Stopwatch {
 	function stop()
 	{
 		if ($this->_startTime) {
-			$this->_elapsedTime += microtime(true) - $this->_startTime;
+			$this->_elapsedTime = microtime(true) - $this->_startTime;
 			$this->_startTime = 0;
 		}
 	}
