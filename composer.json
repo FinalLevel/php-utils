@@ -1,0 +1,21 @@
+{
+    "name": "misaret/php-utils",
+    "description": "PHP Utils",
+	"keywords": ["utils"],
+	"homepage": "https://github.com/misaret/php-utils",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Vitalii Khranivskyi",
+            "email": "misaret@gmail.com"
+        }
+    ],
+    "require": {
+		"php": ">=5.4.0"
+    },
+	"autoload": {
+		"psr-4": {
+			"misaret\\utils\\": ""
+		}
+	}
+}
