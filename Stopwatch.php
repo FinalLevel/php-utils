@@ -18,24 +18,24 @@ class Stopwatch {
 	/**
 	 * @param bool $startNow
 	 */
-	function __construct($startNow = true)
+	public function __construct($startNow = true)
 	{
 		if ($startNow)
 			$this->start();
 	}
 
-	function start()
+	public function start()
 	{
 		$this->_startTime = microtime(true);
 	}
 
-	function reset()
+	public function reset()
 	{
 		$this->_startTime = 0;
 		$this->_elapsedTime = 0;
 	}
 
-	function stop()
+	public function stop()
 	{
 		if ($this->_startTime) {
 			$this->_elapsedTime = microtime(true) - $this->_startTime;
@@ -47,7 +47,7 @@ class Stopwatch {
 	 * @param int $decimals number of decimal points
 	 * @return float|string
 	 */
-	function getElapsed($decimals = null)
+	public function getElapsed($decimals = null)
 	{
 		$this->stop();
 
