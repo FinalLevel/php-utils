@@ -43,7 +43,7 @@ class File implements \misaret\utils\StorageInterface
 		}
 		$result[] = $name;
 
-		return implode(DIRECTORY_SEPARATOR, $result);
+		return implode('/', $result);
 	}
 
 	protected function _getLocalPath($name)
@@ -104,6 +104,11 @@ class File implements \misaret\utils\StorageInterface
 	public function touch($name, $modTime = null)
 	{
 		return touch($this->_getLocalPath($name), $modTime);
+	}
+
+	public function move($name, $newName)
+	{
+		return rename($this->_getLocalPath($name), $this->_getLocalPath($newName));
 	}
 
 	public function getExternalUri($name)

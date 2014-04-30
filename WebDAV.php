@@ -64,8 +64,7 @@ class WebDAV
 	 */
 	public function get($path)
 	{
-		$headers = "GET $path HTTP/1.0\r\n" .
-			"Host: $this->host\r\n";
+		$headers = "GET $path HTTP/1.1\r\n";
 
 		$timer = new Stopwatch();
 
@@ -89,8 +88,7 @@ class WebDAV
 	 */
 	public function getFile($path, $outFile)
 	{
-		$headers = "GET $path HTTP/1.0\r\n" .
-			"Host: $this->host\r\n";
+		$headers = "GET $path HTTP/1.1\r\n";
 
 		$timer = new Stopwatch();
 
@@ -115,9 +113,8 @@ class WebDAV
 	 */
 	public function put($path, $content, $modTime = null)
 	{
-		$headers = "PUT $path HTTP/1.0\r\n" .
-			"Host: $this->host\r\n" .
-			"Content-Length: " . strlen($content) . "\r\n";
+		$headers = "PUT $path HTTP/1.1\r\n"
+			. "Content-Length: " . strlen($content) . "\r\n";
 		if ($modTime) {
 			$headers .= "Date: " . gmdate('D, d M Y H:i:s T', $modTime) . "\r\n";
 		}
@@ -155,9 +152,8 @@ class WebDAV
 			return false;
 		}
 
-		$headers = "PUT $path HTTP/1.0\r\n" .
-			"Host: $this->host\r\n" .
-			"Content-Length: $fileSize\r\n";
+		$headers = "PUT $path HTTP/1.1\r\n"
+			. "Content-Length: $fileSize\r\n";
 		if ($modTime) {
 			$headers .= "Date: " . gmdate('D, d M Y H:i:s T', $modTime) . "\r\n";
 		}
@@ -183,8 +179,7 @@ class WebDAV
 	 */
 	public function delete($path)
 	{
-		$headers = "DELETE $path HTTP/1.0\r\n" .
-			"Host: $this->host\r\n";
+		$headers = "DELETE $path HTTP/1.1\r\n";
 
 		$timer = new Stopwatch();
 
@@ -207,8 +202,7 @@ class WebDAV
 	 */
 	public function head($path)
 	{
-		$headers = "HEAD $path HTTP/1.0\r\n" .
-			"Host: $this->host\r\n";
+		$headers = "HEAD $path HTTP/1.1\r\n";
 
 		$timer = new Stopwatch();
 
@@ -218,6 +212,24 @@ class WebDAV
 			return false;
 		} else {
 			$this->_log('HEAD', $path, $timer, E_USER_NOTICE);
+		}
+
+		return true;
+	}
+
+	public function move($path, $detination)
+	{
+		$headers = "MOVE $path HTTP/1.1\r\n"
+			. "Destination: $detination\r\n";
+
+		$timer = new Stopwatch();
+
+		$body = $this->_execute($headers);
+		if ($body === false) {
+			$this->_log('MOVE', $path, $timer, E_USER_WARNING);
+			return false;
+		} else {
+			$this->_log('MOVE', $path, $timer, E_USER_NOTICE);
 		}
 
 		return true;
@@ -268,7 +280,8 @@ class WebDAV
 	 */
 	protected function _log($type, $path, Stopwatch $timer, $errorType = E_USER_NOTICE, $fileSize = null)
 	{
-		trigger_error($type . ' ' . $this->host . ':' . $this->port . $path . ($fileSize ? '; ' . $fileSize . 'b ' : '') . '; ' . $timer->getElapsed(3) . 'sec.', $errorType);
+		trigger_error('[' . $this->host . ':' . $this->port . '] ' . $type . ' ' . $path 
+			. ($fileSize ? '; ' . $fileSize . 'b' : '') . '; ' . $timer->getElapsed(3) . 'sec.', $errorType);
 	}
 
 	/**
@@ -287,7 +300,12 @@ class WebDAV
 			return false;
 		}
 
-		$res = $socket->send($headers . "\r\n");
+		$res = $socket->send(
+			$headers
+			. "Host: $this->host\r\n"
+			. "Connection: close\r\n"
+			. "\r\n"
+		);
 		if (!$res) {
 			trigger_error('Error sending header', E_USER_WARNING);
 			return false;

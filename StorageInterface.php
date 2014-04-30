@@ -94,6 +94,15 @@ interface StorageInterface
 	public function touch($name, $modTime = null);
 	
 	/**
+	 * Touch file and set modtime
+	 *
+	 * @param string $name
+	 * @param integer $modTime
+	 * @return boolean
+	 */
+	public function move($name, $newName);
+
+	/**
 	 * Get URI for file
 	 *
 	 * @param string $name
