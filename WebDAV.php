@@ -1,12 +1,12 @@
 <?php
 /**
- * @link https://github.com/misaret/php-utils/
+ * @link https://github.com/FinalLevel/php-utils/
  * @copyright Copyright (c) 2014 Vitalii Khranivskyi
  * @author Vitalii Khranivskyi <misaret@gmail.com>
  * @license LICENSE file
  */
 
-namespace misaret\utils;
+namespace fl\utils;
 
 /**
  * WebDAV Interface
@@ -274,7 +274,7 @@ class WebDAV
 	 *
 	 * @param string $type
 	 * @param string $path
-	 * @param \misaret\utils\Stopwatch $timer
+	 * @param \fl\utils\Stopwatch $timer
 	 * @param integer $errorType
 	 * @param integer $fileSize
 	 */

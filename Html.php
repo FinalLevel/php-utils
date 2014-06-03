@@ -1,6 +1,6 @@
 <?php
 
-namespace misaret\utils;
+namespace fl\utils;
 
 class Html
 {

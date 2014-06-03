@@ -1,8 +1,8 @@
 {
-    "name": "misaret/php-utils",
+    "name": "FinalLevel/php-utils",
     "description": "PHP Utils",
 	"keywords": ["utils"],
-	"homepage": "https://github.com/misaret/php-utils",
+	"homepage": "https://github.com/FinalLevel/php-utils",
     "license": "MIT",
     "authors": [
         {
@@ -15,7 +15,7 @@
     },
 	"autoload": {
 		"psr-4": {
-			"misaret\\utils\\": ""
+			"fl\\utils\\": ""
 		}
 	}
 }

@@ -1,17 +1,17 @@
 <?php
 /**
- * @link https://github.com/misaret/php-utils/
+ * @link https://github.com/FinalLevel/php-utils/
  * @copyright Copyright (c) 2014 Vitalii Khranivskyi
  * @author Vitalii Khranivskyi <misaret@gmail.com>
  * @license LICENSE file
  */
 
-namespace misaret\utils\storage;
+namespace fl\utils\storage;
 
 /**
  * Storage engine: file
  */
-class File implements \misaret\utils\StorageInterface
+class File implements \fl\utils\StorageInterface
 {
 	public $localBasePath;
 	public $externalBaseUri;

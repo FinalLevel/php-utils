@@ -1,12 +1,12 @@
 <?php
 /**
- * @link https://github.com/misaret/php-utils/
+ * @link https://github.com/FinalLevel/php-utils/
  * @copyright Copyright (c) 2014 Vitalii Khranivskyi
  * @author Vitalii Khranivskyi <misaret@gmail.com>
  * @license LICENSE file
  */
 
-namespace misaret\utils\fileSystem;
+namespace fl\utils\fileSystem;
 
 /**
  * Manage temporary file. Close pointer and unlink file when object destroy

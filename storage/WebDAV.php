@@ -1,22 +1,22 @@
 <?php
 /**
- * @link https://github.com/misaret/php-utils/
+ * @link https://github.com/FinalLevel/php-utils/
  * @copyright Copyright (c) 2014 Vitalii Khranivskyi
  * @author Vitalii Khranivskyi <misaret@gmail.com>
  * @license LICENSE file
  */
 
-namespace misaret\utils\storage;
+namespace fl\utils\storage;
 
 /**
  * Storage engine: WebDAV
  */
-class WebDAV implements \misaret\utils\StorageInterface
+class WebDAV implements \fl\utils\StorageInterface
 {
 	/**
 	 * WebDAV instance
 	 * 
-	 * @var \misaret\utils\WebDAV
+	 * @var \fl\utils\WebDAV
 	 */
 	public $webDAV;
 	public $localBasePath;
@@ -32,7 +32,7 @@ class WebDAV implements \misaret\utils\StorageInterface
 	function __construct($server, $externalBaseUri = null, $timeout = 5, $levelsCount = null)
 	{
 		$info = parse_url($server);
-		$this->webDAV = new \misaret\utils\WebDAV($info['host'], (empty($info['port']) ? 80 : $info['port']), $timeout);
+		$this->webDAV = new \fl\utils\WebDAV($info['host'], (empty($info['port']) ? 80 : $info['port']), $timeout);
 		$this->localBasePath = (empty($info['path']) ? '/' : $info['path']);
 		$this->externalBaseUri = $externalBaseUri;
 		$this->levelsCount = $levelsCount;
