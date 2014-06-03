@@ -6,7 +6,7 @@
  * @license LICENSE file
  */
 
-namespace fl\utils;
+namespace fl\utils\storage;
 
 /**
  * Common interface for storage engines

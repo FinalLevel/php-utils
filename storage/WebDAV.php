@@ -11,7 +11,7 @@ namespace fl\utils\storage;
 /**
  * Storage engine: WebDAV
  */
-class WebDAV implements \fl\utils\StorageInterface
+class WebDAV implements StorageInterface
 {
 	/**
 	 * WebDAV instance

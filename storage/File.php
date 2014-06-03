@@ -11,7 +11,7 @@ namespace fl\utils\storage;
 /**
  * Storage engine: file
  */
-class File implements \fl\utils\StorageInterface
+class File implements StorageInterface
 {
 	public $localBasePath;
 	public $externalBaseUri;
