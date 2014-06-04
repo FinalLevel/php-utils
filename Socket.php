@@ -84,6 +84,16 @@ class Socket
 	}
 
 	/**
+	 * Is connection active?
+	 *
+	 * @return resouce
+	 */
+	function isConnected()
+	{
+		return $this->_socket;
+	}
+
+	/**
 	 * Send $content to socket
 	 *
 	 * @param string $content
