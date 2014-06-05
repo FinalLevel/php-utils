@@ -14,13 +14,20 @@ class Utils
 		}
 
 		trigger_error($file . ' saved; ' . strlen($content) . 'b;');
-		return $res;
+		return true;
 	}
 
 	static public function saveStatic($file, $data)
 	{
 		$str = var_export($data, true);
 		$content = "<?php return $str;";
+
+		return static::saveFile($file, $content);
+	}
+
+	static public function saveJson($file, $data)
+	{
+		$content = json_encode($data, JSON_UNESCAPED_UNICODE);
 
 		return static::saveFile($file, $content);
 	}
