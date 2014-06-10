@@ -12,7 +12,8 @@
     ],
     "require": {
 		"php": ">=5.4.0",
-		"php-64bit": "*"
+		"php-64bit": "*",
+		"swiftmailer/swiftmailer": "*"
     },
 	"autoload": {
 		"psr-4": {
