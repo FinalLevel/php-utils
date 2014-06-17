@@ -11,7 +11,7 @@ class Utils
 	 * @param string $content
 	 * @return boolean
 	 */
-	static public function saveFile($file, $content)
+	public static function saveFile($file, $content)
 	{
 		$res = file_put_contents($file, $content);
 
@@ -32,7 +32,7 @@ class Utils
 	 * @param mixed $data
 	 * @return boolean
 	 */
-	static public function saveStatic($file, $data)
+	public static function saveStatic($file, $data)
 	{
 		$str = var_export($data, true);
 		$content = "<?php return $str;";
@@ -47,7 +47,7 @@ class Utils
 	 * @param mixed $data
 	 * @return boolean
 	 */
-	static public function saveJson($file, $data)
+	public static function saveJson($file, $data)
 	{
 		$content = json_encode($data, JSON_UNESCAPED_UNICODE);
 

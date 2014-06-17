@@ -4,7 +4,7 @@ namespace fl\utils;
 
 class Html
 {
-	static public function linkVars($skeep = null, $input = null)
+	public static function linkVars($skeep = null, $input = null)
 	{
 		if ($input === null) {
 			$input = $_GET;
