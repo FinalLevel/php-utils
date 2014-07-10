@@ -34,8 +34,13 @@ class Utils
 	 */
 	public static function saveStatic($file, $data)
 	{
-		$str = var_export($data, true);
-		$content = "<?php return $str;";
+		if (is_object($data)) {
+			$str = var_export(serialize($data), true);
+			$content = "<?php return unserialize($str);";
+		} else {
+			$str = var_export($data, true);
+			$content = "<?php return $str;";
+		}
 
 		return static::saveFile($file, $content);
 	}

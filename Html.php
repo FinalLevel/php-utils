@@ -26,4 +26,5 @@ class Html
 			return urlencode($key) . '=' . urlencode($val);
 		}, array_keys($input), array_values($input)));
 	}
+	
 }
