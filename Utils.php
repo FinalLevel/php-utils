@@ -67,7 +67,7 @@ class Utils
 	 * @param string $subject
 	 * @param string $body
 	 */
-	static function mail($from, $to, $subject, $body)
+	static function mail($from, $to, $subject, $body, $returnPath = null)
 	{
 		// Create the Transport
 		$transport = \Swift_MailTransport::newInstance();
@@ -81,6 +81,13 @@ class Utils
 			->setTo($to)
 			->setSubject($subject)
 			->setBody($body);
+		if ($returnPath) {
+			if (is_array($returnPath) || is_object($returnPath)) {
+				$message->setReturnPath(key($returnPath));
+			} else {
+				$message->setReturnPath($returnPath);
+			}
+		}
 
 		// Send the message
 		$result = $mailer->send($message);
