@@ -16,7 +16,7 @@ class Stopwatch {
 	private $_elapsedTime = 0;
 
 	/**
-	 * @param bool $startNow
+	 * @param boolean $startNow
 	 */
 	public function __construct($startNow = true)
 	{

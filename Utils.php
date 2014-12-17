@@ -69,6 +69,10 @@ class Utils
 	 */
 	static function mail($from, $to, $subject, $body, $returnPath = null)
 	{
+		\Swift_DependencyContainer::getInstance()
+			->register('transport.mailinvoker')
+			->asSharedInstanceOf('fl\utils\SimpleMailInvoker');
+
 		// Create the Transport
 		$transport = \Swift_MailTransport::newInstance();
 
